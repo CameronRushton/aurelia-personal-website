@@ -1,0 +1,80 @@
+<template>
+  <header scroll_position.bind="scrollTop" scroll_fn.bind="scrollFn"></header>
+  <div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: auto; z-index: 0;" scrolltop.bind="scrollTop" scroll.trigger="handleScroll($event) & throttle">
+    <section class="details-container">
+      <div class="background-image hero">
+        <div class="container">
+          <div>
+            <h1 class="thick-outline">Cameron Rushton</h1>
+            <div style="display: flex; align-items: center;">
+              <div style="background-color: #777; width: 85px; height: 4px; border-radius: 10px;"></div>
+              <p class="thin-outline" style="margin-bottom: 0px; padding: 0px 10px; color: rgba(255,255,255,0.8); font-size: 18px;">Software Developer</p>
+              <div style="background-color: #777; width: 85px; height: 4px; border-radius: 10px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- This is the hook section where I get the reader to continue on -->
+    <section class="details-container dark-background">
+      <div class="container">
+        <h5 class="thin-outline">Pleased to meet you! You found the right guy for the job.</h5>
+      </div>
+    </section>
+
+    <section class="details-container">
+      <div class="container">
+        <div style="display: flex;">
+          <!-- <div style="width: 30%;"></div> -->
+          <div style="display: flex;">
+            <img src="/assets/images/me.jpg" style="border-radius: 100px; border: 2px solid #222;"/>
+            <p>
+              Hey! I'm a computer software developer born in 1997, raised in Whitby, Ontario and live in Ottawa, Ontario.
+              I've been interested in computing for a while. I never knew any programmers or dedicated computer nerds growing up,
+              so I had to carve my own path. I taught myself to read and write in binary and hexadecimal when I was 13 because I thought it was neat.
+              In grade 10, my highschool offered a programming course where we learned the basics with the turing language.
+              The next two years offered an additional course that involved tinkering with breadboards, arduinos, robots and soldering as
+              well as moving us to use java instead. Even though I started with self motivation, I wouldn't be here without the people that helped along the way.
+              I love crafting new programs, adding new features and learning about other industries the software helps.
+              I firmly believe I can do anything if I tried hard enough and I recognise how lucky I am to be able to choose the career
+              that I love, am good at and society needs.
+            </p>
+            
+          </div>
+          <!-- <div style="width: 30%;"></div> -->
+        </div>
+      </div>
+
+    </section>
+    <section class="details-container">
+      <div class="background-image education">
+        <div class="container">
+          <img style="position: relative; width: 70%;" src="/assets/images/carleton.png" class="carleton-logo ${scrollTop > 400? 'opacity1':''}"/>
+          <p>
+            Bachelor of Software Engineering <br/>
+            2015 - 2020
+          </p>
+          <div>
+            <p>
+              See all the courses I've taken
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="details-container">
+      <div click.trigger="showNokia = !showNokia">
+        <img src="/assets/images/nokia-logo.jpg" />
+      </div>
+      <div show.bind="showNokia">
+      </div>
+      <div show.bind="showSolace">
+
+      </div>
+    </section>
+
+
+  </div>
+</template>

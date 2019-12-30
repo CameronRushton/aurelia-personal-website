@@ -1,0 +1,242 @@
+@import "pages/resume/resume";
+@import "pages/projects/projects";
+@import "pages/contact/contact";
+@import "resources/components/header/header";
+
+$green: #06b124;
+$yellow: #c3981d;
+$orange: #ef874b;
+$red: #d61123;
+$title-color: #FFF;
+$subtitle-color: honeydew;
+$text-color: #999;
+$background-color: #303030;
+$background-border: #252525;
+
+.green {
+  color: $green;
+}
+.yellow {
+  color: $yellow;
+}
+.orange {
+  color: $orange;
+}
+.red {
+  color: $red;
+}
+
+
+
+// Home
+.background-image {
+  width: 100%;
+  display:flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 80px;
+  background-size: cover;
+}
+.hero {
+  height: 500px;
+  background-attachment: inherit;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.5) 80%, rgba(0,0,0,0.9) 100%), url("/assets/images/code-hero.png");
+}
+.education {
+  height: 1000px;
+  background-attachment: fixed;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 20%, rgba(0,0,0,0) 80%, rgba(0,0,0,0.9) 100%), url("/assets/images/carleton-background.jpg");
+}
+.carleton-logo {
+  opacity: 0;
+  transition: opacity 0.3s ease-out 1.0s;
+}
+
+
+
+.main-title {
+  text-align: center;
+  background: $background-color;
+  padding-top: 120px;
+  padding-bottom: 20px;
+  h2 {
+      font-size: 36px;
+      color: $title-color;
+      font-weight: 600;
+      margin-bottom: 15px;
+  }
+  p {
+      font-size: 14px;
+      line-height: 24px;
+      color: $text-color;
+      margin-bottom: 0px;
+      max-width: 570px;
+      font-weight: normal;
+      margin: auto;
+  }
+}
+
+.details-container {
+  display: flex;
+  width: 100%;
+  .details {
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+      display: flex;
+      align-items: flex-end;
+      width: 100%;
+      .bottom-details-container{
+          background: rgba(0, 0, 0, 0.7);
+          border-radius: 30px;
+          width: 100%;
+          .main-details {
+              display: flex;
+              color: honeydew;
+              
+              .middle {
+                  text-align: center;
+                  width: 100%;
+              }
+          }
+      }
+  }
+}
+
+.cards {
+  display: flex;
+  min-height: 800px;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  .card {
+    text-align: center;
+    border-radius: 20px;
+    height: 200px;
+    width: 200px;
+    background-color: $background-border;
+    color: $subtitle-color;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: center;
+    margin: 20px 20px;
+    border: 2px solid #505050;
+    .level {
+      position: absolute;
+      background-color: #505050;
+      border-radius: 5px;
+      width: fit-content;
+      padding: 0px 10px;
+      top: 20px;
+      left: -5px;
+      font-size: 18px;
+    }
+    .title {
+      font-size: 34px;
+      font-weight: 700;
+      position: absolute;
+      align-self: center;
+      margin-bottom: 30px;
+    }
+    .description {
+      position: absolute;
+      align-self: center;
+      margin-top: 40px;
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}
+
+
+
+.opacity0 {
+  opacity: 0;
+  width: 0px;
+  height: 0px;
+  visibility: hidden;
+}
+.opacity1 {
+  opacity: 1;
+}
+.no-display {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+  
+a:hover, a:focus {
+  text-decoration: none;
+  outline: none;
+}
+  
+body {
+  line-height: 24px;
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  margin-bottom: 0px;
+  color: rgba(255,255,255,0.9);
+}
+
+
+
+.thin-outline {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.med-outline {
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.thick-outline {
+  text-shadow: -3px 0px black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+.w0 {
+  width: 0px;
+}
+.w20 {
+  width: 20px;
+}
+.w100p {
+  width: 100%;
+}
+.h80 {
+  height: 80px;
+}
+.h300 {
+  height: 300px
+}
+
+.footer-area {
+  background: $background-border;
+  padding: 85px 0px 85px 0px;
+  display: flex;
+  justify-content: space-around;
+  .text {
+    color: $subtitle-color;
+  }
+}
+
+.dark-background {
+  background-color: $background-border;
+}
+
+@media (min-width: 1250px) { //Supposed to be 1200px but the home page level cards fir nicely like this
+  .container {
+    max-width: 1230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 15vw;
+  }
+}
