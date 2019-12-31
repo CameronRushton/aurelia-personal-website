@@ -1,15 +1,16 @@
 $green: #06b124;
-$yellow: #c3981d;
-$orange: #ef874b;
-$red: #d61123;
 $title-color: #FFF;
 $subtitle-color: honeydew;
 $text-color: #999;
-$background-color: #303030;
-$background-border: #252525;
+$background-color: #2f3234;//#303030;
+$background-border: #1f2122;//#252525;
+$shoyu: #08D8B9;
+$blue: #005DAA;
+$violet: blueviolet;
 
 .header1 {
-    background: $background-border;
+    // background: $background-border;
+    background-image: linear-gradient(to right, $shoyu, $blue, $violet);
     position: fixed;
     width: 100%;
     height: 80px;
@@ -143,7 +144,8 @@ $background-border: #252525;
   // Header on side of screen
   
   .header2 {
-    background: $background-border;
+    // background: $background-border;
+    background-image: linear-gradient(to bottom, $shoyu, $blue, $violet);
     position: fixed;
     overflow: hidden;
     font-size: 25px;

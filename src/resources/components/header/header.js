@@ -13,7 +13,7 @@ export class Header {
             if (route.name === "home") {
                 route.char = "H";
             } else {
-                route.char = index;
+                route.char = route.title.charAt(0);
             }
         })
         this.screenWidth = screen.width;
