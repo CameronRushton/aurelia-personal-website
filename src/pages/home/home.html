@@ -1,77 +1,162 @@
 <template>
   <header scroll_position.bind="scrollTop" scroll_fn.bind="scrollFn"></header>
   <div style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: auto; z-index: 0;" scrolltop.bind="scrollTop" scroll.trigger="handleScroll($event) & throttle">
-    <section class="details-container">
+    <section class="details-container" style="height: 100vh;">
       <div class="background-image hero">
         <div style="backdrop-filter: blur(2px); width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center;">
-          <div class="container">
-            <div>
+          <div style="height: 100%;" class="container">
+            <div style="margin-top: auto;">
               <h1 class="thick-outline">Cameron Rushton</h1>
               <div style="display: flex; align-items: center;">
-                <div class="left-bar" style="width: 85px; height: 4px; border-radius: 10px;"></div>
-                <p class="thin-outline" style="margin-bottom: 0px; padding: 0px 10px; color: rgba(255,255,255,0.8); font-size: 18px;">Software Developer</p>
-                <div class="right-bar" style="width: 85px; height: 4px; border-radius: 10px;"></div>
+                <div class="left-bar" style="width: 100%; height: 4px; border-radius: 10px;"></div>
+                <p class="thin-outline" style="white-space: nowrap; margin-bottom: 0px; padding: 0px 10px; color: rgba(255,255,255,0.8); font-size: 18px;">Software Developer</p>
+                <div class="right-bar" style="width: 100%; height: 4px; border-radius: 10px;"></div>
+              </div>
+            </div>
+            <div class="${showSeeMore && scrollTop < 100? 'opacity1':'opacity0'}" style="transition: opacity 0.8s linear; font-size: 26px; margin-top: auto; margin-bottom: 40px;"><a click.delegate="scrollToId('about')">See more</a></div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="details-container">
+      <div class="container">
+        <div style="margin: 10% 0%;" id="about">
+          <h2>About Me</h2>
+          <div style="display: flex; width: 100%; justify-content: center;">
+            
+            <div class="ptext dark-background" style="display: flex; flex-direction: column; justify-content: space-evenly; position: relative;">
+              <img src="/assets/images/me.jpg" style="border-radius: 50%; border: 2px solid #222; height: 200px; width: 200px; box-shadow: 2px 1px 10px 1px black;"/>
+              <div>
+                <img src="/assets/images/home-icon.png" style="width: 50px;"/>
+                From Whitby, Ontario
+              </div>
+              <div>
+                <img src="/assets/images/location-icon.png" style="width: 50px;"/>
+                Lives in Ottawa, Ontario
+              </div>
+            </div>
+            
+
+            <div style="padding-left: 10px;">
+              <p class="ptext dark-background">
+                Hey! I'm looking for a fast pace, competative, and trendy company to show off my skills.
+                Armed with a <span style="color: darkviolet;">Software Engineering</span> degree from <span style="color: red;">Carleton University</span> and almost two years
+                of industry experience, I'm ready to take on a challenge. <br/><br/>
+                Don't need a developer? Hire me as a DJ!
+              </p>
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="ptext dark-background" style="    height: 300px;
+                background-image: url(/assets/images/drum.png);
+                background-size: cover;
+                filter: grayscale(100%);width: 100%; border-radius: 0px; background-image: url('/assets/images/drum.png');">
+
+                </div>
+                <div class="ptext dark-background" style="width: 100%; border-radius: 0px;">
+                  
+                </div>
+                <div class="ptext dark-background" style="width: 100%; border-radius: 0px;">
+                  
+                </div>
+              </div>
+              <div class="ptext dark-background" style="display: flex; justify-content: space-evenly; align-items: center; padding: 2% 0%;">
+                <div class="pair">
+                  <img style="max-width: 50px;" src="/assets/images/linkedin-logo.png"/>
+                  <label>Linkedin</label>
+                </div>
+                <div class="pair">
+                  <img style="max-width: 50px;" src="/assets/images/github-logo.png"/>
+                  <label>GitHub</label>
+                </div>
+                <a style="display: flex; align-items: center;" class="tool-tip" click.delegate="copy($event.target)">
+                  <span class="tooltiptext" style="bottom: 50px; right: 380px;">${copyText}</span>
+                  <img style="margin-right: 10px; max-width: 20px;" src="/assets/images/copy-icon.png"/>
+                  <input type="text" disabled value="cameron.rushton@rogers.com"></input>
+                </a>
               </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
     <section class="details-container">
-      <div class="container dark-background">
-        <div style="display: flex; width: 100%; justify-content: space-around;">
-          <img src="/assets/images/me.jpg" style="border-radius: 50%; border: 2px solid #222; height: 200px; width: 200px;"/>
-          <div style="display: flex; justify-content: space-evenly; flex-direction: column;">
-            <div>
-              Born in 1997
-            </div>
-            <div>
-              From Whitby, Ontario
-            </div>
-            <div>
-              Programming since 2012
-            </div>
-          </div>            
-        </div>
+      <div class="container">
 
-        <div>
-          Top Languages
+        <h2>
+          Familiar Technologies
+        </h2>
+        <p class="ptext dark-background">
+          ${techDesc}
+        </p>
+        <div style="width: 100%; padding-bottom: 60px;">
+          <ul id="hexGrid">
+            <li class="hex" repeat.for="technology of technologies" with.bind="technology" click.delegate="selectTech(technology)">
+              <a class="hexIn" href="#">
+                <div class="gradient ${isActive? 'pressed':''}"></div>
+                <h1>${name}</h1>
+              </a>
+            </li>
+          </ul>
         </div>
-        <div style="display: flex; justify-content: space-evenly; width: 100%;">
-          <div>
-            <p>Java</p>
-            <img style="width: 200px;" src="/assets/images/java-logo.png"/>
-          </div>
-          <div>
-            <p>Python</p>
-            <img style="width: 200px;" src="/assets/images/python-logo.png"/>
-          </div>
-          <div>
-            <p>JS (ES6)</p>
-            <img style="width: 200px;" src="/assets/images/j3-logo.png"/>
-          </div>
-        </div>
-
       </div>
-
     </section>
     <section class="details-container">
-      <div class="background-image education">
-        <div class="container fade-in ${scrollTop > 400? 'opacity1':''}">
-          <img style="margin-bottom: 40px; position: relative; max-width: 600px; background-color: #EEE; padding: 20px; border: 1px solid black; border-radius: 30px; box-shadow: 0px 5px 15px 3px black;" src="/assets/images/carleton.png"/>
-          <p>
-            Bachelor of Software Engineering <br/>
-            2015 - 2020
-          </p>
-          <div>
-            <p>
-              See all the courses I've taken
-            </p>
+      <div class="container">
+        <div style="padding: 10% 0%; width: 100%;">
+          <h2>
+            Top Languages
+          </h2>
+          <div style="display: flex; justify-content: space-evenly; width: 100%;"> 
+            <div style="margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px; background: linear-gradient(135deg, blue, yellow);
+            width: 202px;
+            height: 202px;
+            box-shadow: 3px 3px 12px 2px black;">
+              <a class="dark-background card">
+                <h5>Python</h5>
+                <img style="max-width: 120px;" src="/assets/images/python-logo.png"/>
+                <div class="ribbon">View Projects ></div>
+              </a>
+            </div>
+
+            <div style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px; background: linear-gradient(orange, blue);
+            width: 202px;
+            height: 202px;
+            box-shadow: 3px 3px 12px 2px black;">
+              <a class="dark-background card">
+                <h5>Java</h5>
+                <img style="max-width: 100px;" src="/assets/images/java-logo.png"/>
+                <div class="ribbon">View Projects ></div>
+              </a>
+            </div>
+            
+            <div style="margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px; background: linear-gradient(to right, red, yellow, blue);
+            width: 202px;
+            height: 202px;
+            box-shadow: 3px 3px 12px 2px black;">
+              <a class="dark-background card">
+                <h5>JS (ES6)</h5>
+                <img style="max-width: 120px;" src="/assets/images/j3-logo.png"/>
+                <div class="ribbon">View Projects ></div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-
     </section>
 
     <section class="details-container">
@@ -88,6 +173,9 @@
       </div>
     </section>
 
+    <footer style="height: 300px;">
 
-  </section>
+    </footer>
+
+  </div>
 </template>
